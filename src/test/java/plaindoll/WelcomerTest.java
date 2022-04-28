@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class WelcomerTest {
-	
+
 	private Welcomer welcomer = new Welcomer();
 
 	@Test
@@ -25,6 +25,5 @@ public class WelcomerTest {
 	@Test
 	public void welcomerSaysStatus() {
 		assertThat(welcomer.sayStatus(), containsString("status"));
-	}
 	}
 }
