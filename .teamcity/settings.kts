@@ -31,21 +31,12 @@ project {
     buildType(Build)
     buildType(Sample)
 
-    params {
-        text("name", "Alexey", readOnly = true, allowEmpty = true)
-        param("system.sample", "123")
-    }
 }
 
 object Build : BuildType({
     name = "Build"
 
     artifactRules = "+:target/*.jar"
-
-    params {
-        param("env.name2", "%name%")
-        password("env.out", "credentialsJSON:12f2c387-f043-4357-8d37-8e00390454d0")
-    }
 
     vcs {
         root(DslContext.settingsRoot)
@@ -63,7 +54,7 @@ object Build : BuildType({
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         maven {
-            name = "make distrib"
+            name = "create distrib"
             executionMode = BuildStep.ExecutionMode.ALWAYS
 
             conditions {
@@ -71,7 +62,7 @@ object Build : BuildType({
             }
             goals = "clean deploy"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
-            userSettingsSelection = "netology"
+            userSettingsSelection = "netology-cernyshov"
         }
     }
 
